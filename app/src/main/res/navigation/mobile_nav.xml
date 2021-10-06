@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_nav.xml"
+    app:startDestination="@id/bloglist">
+
+    <fragment
+        android:id="@+id/bloglist"
+        android:name="in.iot.lab.blogengine.ui.Bloglist"
+        android:label="fragment_bloglist"
+        tools:layout="@layout/fragment_bloglist" />
+</navigation>

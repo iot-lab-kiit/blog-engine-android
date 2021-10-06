@@ -13,23 +13,40 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/toolbar"
             android:background="@color/toolbar">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/read" />
+
             <TextView
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/username"
+                android:layout_marginStart="25dp"
+                android:text="User_Display_Name"
+                android:textColor="#000000"
                 android:textSize="18sp"
-                android:layout_marginLeft="25dp"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:layout_marginStart="25dp" />
+                android:textStyle="bold" />
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bar_layout"
+        android:layout_weight="1"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/mobile_nav" />
 
 </RelativeLayout>

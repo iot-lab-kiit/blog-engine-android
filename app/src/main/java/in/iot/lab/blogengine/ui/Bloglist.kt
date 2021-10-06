@@ -1,11 +1,11 @@
 package `in`.iot.lab.blogengine.ui
 
+import `in`.iot.lab.blogengine.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import in .iot.lab.blogengine.R
 
 
 class Bloglist : Fragment() {
