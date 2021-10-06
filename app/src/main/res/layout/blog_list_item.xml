@@ -11,12 +11,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:padding="5dp"
         android:layout_marginStart="0dp"
-        android:background="@drawable/image_border"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
+        android:background="@drawable/image_border"
         android:contentDescription="blog pic"
+        android:padding="5dp"
         android:src="@drawable/blog_list_pic" />
 
     <TextView

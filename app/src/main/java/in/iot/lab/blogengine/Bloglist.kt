@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -47,9 +49,10 @@ class Bloglist : Fragment() {
                 response: Response<List<BlogListItem>>
             ) {
                 val posts=response.body()!!
+                val navController=findNavController()
                 blogListRV.apply {
                     layoutManager=LinearLayoutManager(context)
-                    adapter=BlogListAdapter(posts,context)
+                    adapter=BlogListAdapter(posts,context,navController)
                 }
 
             }
