@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/bloglist"
-        android:name="in.iot.lab.blogengine.ui.Bloglist"
+        android:name="in.iot.lab.blogengine.Bloglist"
         android:label="fragment_bloglist"
-        tools:layout="@layout/fragment_bloglist" />
+        tools:layout="@layout/fragment_bloglist" >
+        <action
+            android:id="@+id/action_bloglist_to_blogFragment"
+            app:destination="@id/blogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blogFragment"
+        android:name="in.iot.lab.blogengine.BlogFragment"
+        android:label="fragment_blog"
+        tools:layout="@layout/fragment_blog" />
 </navigation>
