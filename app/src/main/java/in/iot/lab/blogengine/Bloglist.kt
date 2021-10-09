@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class Bloglist : Fragment() {
-    private val baseUrl="https://myways-backend.herokuapp.com/api/"
+    private val baseUrl="https://blog-backend-iot.herokuapp.com/api/"
     lateinit var blogListRV:RecyclerView
 
 
