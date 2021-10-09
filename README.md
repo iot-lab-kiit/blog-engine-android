@@ -37,13 +37,13 @@ git clone https://github.com/Your-username/blog-engine-android.git
 ## Choose from these Tasks
 1.Any possible UI updates.
 
-2.Add Sign In/ Register options in app using the provided api-"" , also update the profile pic and name on Toolbar of the app.
+2.Add Sign In/ Register options in app using the provided api-"https://blog-backend-iot.herokuapp.com/api/register" & "https://blog-backend-iot.herokuapp.com/api/signin" , also update the profile pic and name on Toolbar of the app.
 
-3.Show the likes and comments in the particular blog using the api-"".
+3.Show the likes and comments in the particular blog using the api-"https://blog-backend-iot.herokuapp.com/api/blog/comment/:id"(pass comment as body) & "https://blog-backend-iot.herokuapp.com/api/blog/like/:id"(calling this api will increase like count in database).
 
-4.Add a option to post a new comment using api-"".
+4.Add a option to post a new comment using api-"https://blog-backend-iot.herokuapp.com/api/:id" (Id is the blog Id defined already in Database).
 
-5.Add a option to update the like in the database using api-"".
+5.Add a option to update the like in the database using api-"https://blog-backend-iot.herokuapp.com/api/:id" (Id is the blog Id defined already in Database).
 
 6.Add Rich text Viewer to view blogs.
 
