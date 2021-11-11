@@ -2,6 +2,7 @@ package `in`.iot.lab.blogengine
 
 import `in`.iot.lab.blogengine.R
 import `in`.iot.lab.blogengine.adapter.BlogListAdapter
+import `in`.iot.lab.blogengine.databinding.FragmentBloglistBinding
 import `in`.iot.lab.blogengine.inteface.GetInterface
 import `in`.iot.lab.blogengine.model.BlogListItem
 import android.os.Bundle
@@ -25,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Bloglist : Fragment() {
     private val baseUrl="https://blog-backend-iot.herokuapp.com/api/"
     lateinit var blogListRV:RecyclerView
-
+    private var fragmentBlogList: FragmentBloglistBinding? =null
 
 
     override fun onCreateView(
@@ -33,8 +34,9 @@ class Bloglist : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_bloglist, container, false)
-        blogListRV=view.findViewById(R.id.recycler_list)
+        val binding= FragmentBloglistBinding.inflate(inflater, container, false)
+        fragmentBlogList =binding
+        binding.recyclerList.visibility = View.GONE
         val retroFit= Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
@@ -48,9 +50,12 @@ class Bloglist : Fragment() {
                 call: Call<List<BlogListItem>>,
                 response: Response<List<BlogListItem>>
             ) {
+                binding.loadingShimmer.stopShimmer()
+                binding.loadingShimmer.visibility = View.GONE
+                binding.recyclerList.visibility = View.VISIBLE
                 val posts=response.body()!!
                 val navController=findNavController()
-                blogListRV.apply {
+                binding.recyclerList.apply {
                     layoutManager=LinearLayoutManager(context)
                     adapter=BlogListAdapter(posts,context,navController)
                 }
@@ -58,10 +63,11 @@ class Bloglist : Fragment() {
             }
 
             override fun onFailure(call: Call<List<BlogListItem>>, t: Throwable) {
+                binding.loadingShimmer.visibility = View.GONE
                 Toast.makeText(context,t.message.toString(),Toast.LENGTH_LONG).show()
             }
 
         })
-        return view
+        return binding.root
     }
 }
