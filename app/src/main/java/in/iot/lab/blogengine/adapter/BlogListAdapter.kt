@@ -17,9 +17,6 @@ import `in`.iot.lab.blogengine.model.BlogListItem as BlogListItem1
 class BlogListAdapter(var blogList:List<BlogListItem1>, var context: Context, var navController: NavController):
     RecyclerView.Adapter<BlogListAdapter.BloglistViewHolder>() {
 
-
-
-
     class BloglistViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var title=itemView.findViewById<TextView>(R.id.blog_title)
         var data=itemView.findViewById<TextView>(R.id.blog_data)
@@ -56,5 +53,4 @@ class BlogListAdapter(var blogList:List<BlogListItem1>, var context: Context, va
     override fun getItemCount(): Int {
         return blogList.size
     }
-
 }

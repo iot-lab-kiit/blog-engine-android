@@ -51,7 +51,7 @@ class Bloglist : Fragment() {
         return view
     }
 
-    suspend fun enginestart()
+    private fun enginestart()
     {
         blogCall.enqueue(object:Callback<List<BlogListItem>>{
             override fun onResponse(
