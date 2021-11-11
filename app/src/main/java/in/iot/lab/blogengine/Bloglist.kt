@@ -36,6 +36,7 @@ class Bloglist : Fragment() {
         // Inflate the layout for this fragment
         val binding= FragmentBloglistBinding.inflate(inflater, container, false)
         fragmentBlogList =binding
+        binding.recyclerList.visibility = View.GONE
         val retroFit= Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
@@ -49,6 +50,9 @@ class Bloglist : Fragment() {
                 call: Call<List<BlogListItem>>,
                 response: Response<List<BlogListItem>>
             ) {
+                binding.loadingShimmer.stopShimmer()
+                binding.loadingShimmer.visibility = View.GONE
+                binding.recyclerList.visibility = View.VISIBLE
                 val posts=response.body()!!
                 val navController=findNavController()
                 binding.recyclerList.apply {
@@ -59,6 +63,7 @@ class Bloglist : Fragment() {
             }
 
             override fun onFailure(call: Call<List<BlogListItem>>, t: Throwable) {
+                binding.loadingShimmer.visibility = View.GONE
                 Toast.makeText(context,t.message.toString(),Toast.LENGTH_LONG).show()
             }
 
