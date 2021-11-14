@@ -2,6 +2,7 @@ package `in`.iot.lab.blogengine.adapter
 
 import `in`.iot.lab.blogengine.Bloglist
 import `in`.iot.lab.blogengine.R
+import `in`.iot.lab.blogengine.database.viewmodel.userviewmodel
 import `in`.iot.lab.blogengine.model.Blogitem
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,18 +10,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import kotlinx.coroutines.NonDisposableHandle.parent
 import `in`.iot.lab.blogengine.model.BlogListItem as BlogListItem1
 
 class BlogListAdapter(var blogList:List<BlogListItem1>, var context: Context, var navController: NavController):
     RecyclerView.Adapter<BlogListAdapter.BloglistViewHolder>() {
 
-
-
-
     class BloglistViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+
         var title=itemView.findViewById<TextView>(R.id.blog_title)
         var data=itemView.findViewById<TextView>(R.id.blog_data)
         var imageView=itemView.findViewById<ImageView>(R.id.blog_pic)
@@ -33,7 +34,6 @@ class BlogListAdapter(var blogList:List<BlogListItem1>, var context: Context, va
             Glide.with(context).load(posts.image).into(imageView)
             this.navController=navController
             listItem=posts
-//            imageView.setImageURI(Uri.parse(posts.imageUrl))
         }
         init{
             itemView.setOnClickListener{
@@ -56,5 +56,4 @@ class BlogListAdapter(var blogList:List<BlogListItem1>, var context: Context, va
     override fun getItemCount(): Int {
         return blogList.size
     }
-
 }
